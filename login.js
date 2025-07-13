@@ -23,7 +23,7 @@
 
             if (matchedUser) {
               localStorage.setItem('loggedInUser', matchedUser.name); // ✅ Save name, not just username
-              window.location.href = 'index.html';
+              window.location.href = 'home.html';
             } else {
               errorMessage.textContent = 'Invalid username or password';
               errorMessage.style.display = 'block';
