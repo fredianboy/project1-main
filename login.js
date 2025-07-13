@@ -1,13 +1,13 @@
   // Hardcoded credentials
         const credentials = [
-            { username: "admin", password: "password123", name: "Fred Hortilano" },
-            { username: "user1", password: "welcome1", name: "Mayena Aguilar" },
-            { username: "testuser", password: "test2025", name: "Abdel Arani" },
-            { username: "guest", password: "guestpass", name: "Jaypee Bacalla" },
-            { username: "pharmacy", password: "pharmacy2025", name: "Grace Villareal" },
-            { username: "pharmacist", password: "pharmacist2025", name: "Jakki Ygoña" },
-            { username: "staff", password: "staff2025", name: "Phillip Deppler" },
-            { username: "admin2", password: "adminpass", name: "Fatima Fofana" }    
+            { username: "admin", password: "password123", name: "Fred" },
+            { username: "user1", password: "welcome1", name: "Mayena" },
+            { username: "testuser", password: "test2025", name: "Abdel" },
+            { username: "guest", password: "guestpass", name: "Jaypee" },
+            { username: "pharmacy", password: "pharmacy2025", name: "Grace" },
+            { username: "pharmacist", password: "pharmacist2025", name: "Jakki" },
+            { username: "staff", password: "staff2025", name: "Phillip" },
+            { username: "admin2", password: "adminpass", name: "Fatima" }    
         ];
 
         document.getElementById('login-form').addEventListener('submit', function(event) {
