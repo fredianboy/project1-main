@@ -1,0 +1,129 @@
+@page {
+    size: 222mm 700mm;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Courier, Times, serif;
+    background: #f0f0f0;
+    padding: 20px;
+}
+
+.summary {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 5mm;
+    margin: auto;
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 12pt;
+}
+
+h1
+ {
+    text-align: center;
+    margin-bottom: 5px;
+    background-color: #add8e6;
+    border: 2px solid black;
+}
+
+h2 {
+    text-decoration: underline;
+    text-align: center;
+
+}
+
+.form-section {
+    margin-bottom: 10mm;
+    margin-top: 50px;
+}
+
+label {
+    display: block;
+    margin-bottom: 2mm;
+    font-weight: bold;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 4mm;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 11pt;
+    margin-bottom: 5mm;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10mm;
+    border:2px solid black;
+}
+
+th,
+td {
+    border: 1px solid #ccc;
+    padding: 2mm;
+    text-align: left;
+    font-size: 11pt;
+}
+
+th {
+    background-color: #add8e6;
+    border-bottom: 2px solid black;
+}
+
+.date-container {
+    display: flex;
+    justify-content: center;
+    background-color: #add8e6;
+    padding-top: 30px;
+    font-size: larger;
+}
+
+
+#order-summary {
+    padding: 0%;
+    margin-top: -10px;
+
+}
+
+
+.button-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px; 
+  padding: 12px 0;
+  z-index: 1000;
+   
+}
+
+button {
+  padding: 10px 16px;
+  background-color: orange;
+  border: 2px solid #000;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+
+button:active {
+  color: black;
+  background-color: yellow;   
+}

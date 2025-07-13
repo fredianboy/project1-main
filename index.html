@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pharmacy Ward Stock Reorder Form</title>
+    <link href="page1.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <h1>Pharmacy Ward Stock Reorder Form</h1>
+    <h2>Inventory: LB - Endoscopy</h2>
+   
+
+    <form onsubmit="return validateForm();">
+        <h3><label for="dateValue">SELECT ORDER DATE:</label><input type="date" id="dateValue" placeholder="00.00.00" required></h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>MNEMONIC</th>
+                    <th>LOCATION</th>
+                    <th>MEDICATION GENERIC NAME</th>
+                    <th>PAR</th>
+                    <th>PREVIOUS DATE ORDERED <br>PREVIOUS AMOUNT ORDERED</th>
+                    <th>ORDER NOW</th>
+                    <th>AMOUNT</th>
+                </tr>
+            </thead>
+
+
+            <tbody>
+
+
+                <td colspan="7" class="medsType">INTERNAL LIQUIDS</td>
+
+                <tr>
+                    <td class="mnemonic">INF4040S01</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">INFACOL 40mg/mL Oral Suspensions 55 mL</td>
+                    <td class="PAR">20</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item1" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty1" readonly></td>
+                </tr>
+
+                <tr>
+                    <td colspan="7"></td>
+                </tr>
+
+                <td colspan="7" class="medsType">INTERNAL LIQUIDS</td>
+
+                <tr>
+                    <td class="mnemonic">ADR1I</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">ADRENALINE 1mg/ml (1:1000) Ampoules</td>
+                    <td class="PAR">30</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item2" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty2" readonly></td>
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">ADR10I1</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">ADRENALINE 1mg/10mL (1:10,000) Ampoules</td>
+                    <td class="PAR">50</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item3" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty3" readonly></td>
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">AMO500I1</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">AMOXICILLIN 500mg Vials</td>
+                    <td class="PAR">10</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item4" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty4" readonly></td>
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">ATR600I</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">ATROPINE SULPHATE 600 micrograms/mL Amps</td>
+                    <td class="PAR">20</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item5" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty5" readonly></td>
+                </tr>
+
+                
+                <tr>
+                    <td class="mnemonic">BUS20I</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">BUSCOPAN 20 mg/mL Ampoules Ampoules</td>
+                    <td class="PAR">20</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item5" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty6" readonly></td>
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">FLLU500I3</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">FLUMAZENIL 500 micrograms/5mL Amps (5)</td>
+                    <td class="PAR">-</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item5" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty7" readonly></td>
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">GEN80I</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">GENTAMICIN 80 mg/2mL Ampoules</td>
+                    <td class="PAR">-</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty8" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">KEN40I</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">KENALOG 40 mg/mL Vials</td>
+                    <td class="PAR">25</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty9" readonly></td>
+
+                <tr>
+                    <td class="mnemonic">LIDS1I10</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">LIDOCAINE 1% MINI-PLASCO 10 mL Ampoules</td>
+                    <td class="PAR">40</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty10" readonly></td>
+
+                </tr>
+
+
+                <tr>                    
+                    <td class="mnemonic">LIP10I</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">LIPIODOL 10 mL Ampoules</td>
+                    <td class="PAR">3</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty11" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">MET10I</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">METHYLTHIONIUM CHLORIDE 50mg/10mL Amps</td>
+                    <td class="PAR">25</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty12" readonly></td>
+
+                </tr>
+
+                <tr>
+                    <td class="mnemonic">MET10I2</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">METOCLOPRAMIDE 10mg/2mL Ampoules</td>
+                    <td class="PAR">20</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty13" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">NAL400I</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">NALOXONE 400 mcg/mL AMPOULES 1mL (10)</td>
+                    <td class="PAR">-</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty14" readonly></td>
+
+                </tr>
+                    <tr>
+                    <td class="mnemonic">PHE5I</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">OILY PHENOL 5% AMPOULES 5mL</td>
+                    <td class="PAR">-</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty15" readonly></td>
+
+                </tr>
+
+                <tr>
+                    <td class="mnemonic">OND8I</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">ONDANSETRON 8 mg/4 mL Ampoules</td>
+                    <td class="PAR">10</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty16" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">PRO200IF1</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">PROPOVEN (1%) 200mg/20mL Ampoules</td>
+                    <td class="PAR">-</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty17" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">SOD10I2</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">SODIUM CHLORIDE 0.9% Ampoules 10mL (100)</td>
+                    <td class="PAR">300</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty18" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">SOL100I</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">SOLU-CORTEF 100 mg Vials (10)</td>
+                    <td class="PAR">20</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty19" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">WAT10I2</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">WATER FOR INJECTION 10 mL Ampoules (100)</td>
+                    <td class="PAR">-</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty20" readonly></td>
+
+                </tr>
+                
+                
+                <tr>
+                    <td class="mnemonic">CEF750I</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">cefUROXime 750 mg Vials (10)</td>
+                    <td class="PAR">10</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty21" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td colspan="7" class="medsType">EXTERNALS </td>
+                    </tr>
+
+
+                <tr>
+                    <td class="mnemonic">ACE5S0</td>
+                    <td class="loc">-</td>
+                    <td class="medsName">ACETIC ACID 5% Solution 200mL Bottle</td>
+                    <td class="PAR">-</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty22" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">INS11G</td>
+                    <td class="loc">LST CHRG</td>
+                    <td class="medsName">INSTILLAGEL 11 mL Syringe</td>
+                    <td class="PAR">1</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty23" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">XYL10SP</td>
+                    <td class="loc">LST CHRG</td>
+                    <td class="medsName">XYLOCAINE 10% Spray 50mL</td>
+                    <td class="PAR">4</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty24" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td colspan="7" class="medsType">SUPP/ENEMAS/PESSARIES </td>
+                </tr>
+
+
+
+                <tr>
+                    <td class="mnemonic">IND100SU</td>
+                    <td class="loc"></td>
+                    <td class="medsName">INDOCID 100 mg Suppositories</td>
+                    <td class="PAR">10</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty25" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">VOL100SU</td>
+                    <td class="loc"></td>
+                    <td class="medsName">VOLTAROL 100 mg Suppositories</td>
+                    <td class="PAR">-</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty26" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td colspan="7" class="medsType">IV & IRRIGATION FLUIDS</td>
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">GEL500IF</td>
+                    <td class="loc"></td>
+                    <td class="medsName">GELOFUSIN 4% BAGS 500 mL</td>
+                    <td class="PAR">4</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty27" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">GLUS1IF</td>
+                    <td class="loc"></td>
+                    <td class="medsName">GLUCOSE 4% SODCHL 0.18% (1000 mL) Bags</td>
+                    <td class="PAR">2</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty28" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">GLU500IF</td>
+                    <td class="loc"></td>
+                    <td class="medsName">GLUCOSE 5% (500mL) Bags</td>
+                    <td class="PAR">-</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty29" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">HAR1IF</td>
+                    <td class="loc"></td>
+                    <td class="medsName">HARTMANNS Infusion 1000mL Bags</td>
+                    <td class="PAR">10</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty30" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">SOD1IF</td>
+                    <td class="loc"></td>
+                    <td class="medsName">SODIUM CHLORIDE 0.9 (1000mL) Bags</td>
+                    <td class="PAR">10</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty31" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">SOD1IR</td>
+                    <td class="loc"></td>
+                    <td class="medsName">SODIUM CHLORIDE 0.9% (1000mL) Pour Bottle</td>
+                    <td class="PAR">36</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty32" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">WAT1IR</td>
+                    <td class="loc"></td>
+                    <td class="medsName">WATER FOR IRRIGATION 1000 mL Pour Bottle</td>
+                    <td class="PAR">48</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty33" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td colspan="7" class="medsType">EAR/EYE/NOSE PREPARATIONS</td>
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">LID2.5S0</td>
+                    <td class="loc"></td>
+                    <td class="medsName">LIDOCAINE 5%-PHENYLEPHRINE (2.5 mL) Sol</td>
+                    <td class="PAR">8</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty34" readonly></td>
+
+                </tr>
+
+                <tr>
+                    <td colspan="7" class="medsType">INHALATIONS</td>
+                </tr>
+
+
+                <tr>
+                    <td class="mnemonic">SAL2.52N</td>
+                    <td class="loc"></td>
+                    <td class="medsName">SALBUTAMOL 2.5 mg/2.5mL Nebuliser Amp</td>
+                    <td class="PAR">8</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty35" readonly></td>
+
+                </tr>
+
+
+                <tr>
+                    <td colspan="7" class="medsType">CONTROLLED DRUGS</td>
+                </tr>
+
+                <tr>
+                    <td class="mnemonic">FEN2I</td>
+                    <td class="loc"></td>
+                    <td class="medsName">FENTANYL 100 microgram/2mL Ampoules</td>
+                    <td class="PAR">40</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty36" readonly></td>
+
+
+                </tr>
+                
+                
+                <tr>
+                    <td class="mnemonic">FEN10I</td>
+                    <td class="loc"></td>
+                    <td class="medsName">FENTANYL 500 microgram/10mL Ampoules</td>
+                    <td class="PAR">-</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty37" readonly></td>
+
+                </tr>
+                
+                
+                <tr>
+                    <td class="mnemonic">MID5I</td>
+                    <td class="loc"></td>
+                    <td class="medsName">MIDAZOLAM 5 mg/ 5mL Ampoules</td>
+                    <td class="PAR">50</td>
+                    <td class="prevData"></td>
+                    <td class="checkbox-cell">
+                        <label class="custom-checkbox">
+                            <input type="checkbox" name="item6" onchange="toggleInput(this)">
+                            <span class="checkmark"></span>
+                        </label>
+                    </td>
+                     <td><input type="number" name="qty38" readonly></td>
+
+                </tr>    
+
+
+                <!-- Add more items below as needed following the same structure -->
+
+            </tbody>
+        </table>
+
+        <div>
+        <button type="button" onclick="clearFormData()" class="clear-btn">Clear Form</button>
+        <button onclick="saveDate()" type="submit" class="submit-btn">Submit Order</button>
+        </div>
+
+    </form>
+    <script src="page1.js"></script>
+</body>
+
+</html>
