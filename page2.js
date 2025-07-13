@@ -67,10 +67,10 @@ function generatePDF() {
 
 
   function goBackToEdit() {
-    window.location.href = "index.html";
+    window.location.href = "home.html";
   }
 
   function logout() {
     localStorage.removeItem("loggedInUser");
-    window.location.href = "login.html";
+    window.location.href = "index.html";
 }
