@@ -1,4 +1,4 @@
-  // Hardcoded credentials
+  // Hard-Code Creds
         const credentials = [
             { username: "admin", password: "password123", name: "Fred" },
             { username: "user1", password: "welcome1", name: "Mayena" },
