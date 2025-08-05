@@ -131,7 +131,6 @@ input[type="datetime-local"] {
 }
 
 input[type="datetime-local"] {
-    background-color: #ffffff;
     border: 1px solid black;
     border-radius: 4px;
     padding: 6px 10px;
