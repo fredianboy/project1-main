@@ -14,6 +14,7 @@ function toggleInput(checkbox) {
 
 //---------------------------------------------------------------------------------------------------------//
 document.addEventListener("DOMContentLoaded", function () {
+
     const numberInputs = document.querySelectorAll('input[type="number"]');
 
     numberInputs.forEach((input) => {
@@ -75,6 +76,29 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // ✅ Show previous order history in .prevData
     showPreviousOrders();
+
+   const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+    const welcomeEl = document.getElementById("welcome-message");
+    if (welcomeEl) {
+        welcomeEl.textContent = `Welcome, ${loggedInUser}!`;
+      }
+    } 
+
+
+    const dateField = document.getElementById("dateValue");
+if (dateField) {
+    const now = new Date();
+    const tzOffset = now.getTimezoneOffset() * 60000; // handle local time offset
+    const localISOTime = new Date(now - tzOffset).toISOString().slice(0, 16);
+    dateField.min = localISOTime;
+
+    const savedDate = localStorage.getItem("orderDate");
+    if (savedDate) {
+        dateField.value = savedDate;
+    }
+}
+
 });
 
 // ---------------------------------------------------------------------------------------------------------//
@@ -98,9 +122,10 @@ function validateForm() {
         const mnemonic = row.querySelector(".mnemonic")?.textContent.trim();
         const medsName = row.querySelector(".medsName")?.textContent.trim();
         const amount = row.querySelector('input[type="number"]').value.trim();
+        const user = localStorage.getItem("loggedInUser");
 
         if (mnemonic && medsName && amount) {
-            orderData.push({ mnemonic, medsName, amount, date: dateValue });
+            orderData.push({ mnemonic, medsName, amount, date: dateValue, user});
         }
     });
 
@@ -154,7 +179,11 @@ function showPreviousOrders() {
         const entryDate = new Date(entry.date);
         if (entryDate >= oneMonthAgo) {
             if (!grouped[entry.mnemonic]) grouped[entry.mnemonic] = [];
-            grouped[entry.mnemonic].push({ date: entry.date, amount: entry.amount });
+            grouped[entry.mnemonic].push({
+                date: entry.date,
+                amount: entry.amount,
+                user: entry.user || "Unknown"
+            });
         }
     });
 
@@ -166,10 +195,24 @@ function showPreviousOrders() {
             const historyEntries = grouped[mnemonic] || [];
             if (historyEntries.length > 0) {
                 const latest = historyEntries[historyEntries.length - 1];
-                prevDataCell.textContent = `Last: ${latest.date} (${latest.amount})`;
+
+                const formattedDate = new Date(latest.date).toLocaleString("en-GB", {
+                    day: "2-digit", month: "2-digit", year: "numeric",
+                    hour: "2-digit", minute: "2-digit"
+                });
+
+                prevDataCell.textContent = `Last: ${formattedDate} by ${latest.user} [Qty: ${latest.amount}]`;
             } else {
                 prevDataCell.textContent = "No recent orders";
             }
         }
     });
+}
+
+
+
+
+function logoutUser() {
+    localStorage.removeItem("loggedInUser");
+    window.location.href = "index.html";
 }

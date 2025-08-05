@@ -5,6 +5,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pharmacy Ward Stock Reorder Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/airbnb.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=UoqMunThenKhung&display=swap" rel="stylesheet">
     <link href="page1.css" rel="stylesheet">      
 </head>
 
@@ -13,9 +17,17 @@
     <h1>Pharmacy Ward Stock Reorder Form</h1>
     <h2>Inventory: LB - Endoscopy</h2>
    
+    <h3 id="welcome-message" style="text-align: center; color: rgb(0, 0, 0);"></h3>
+    <div style="text-align: center; margin-top: 10px;">
+    <button onclick="logoutUser()" style="padding: 10px 20px; background-color: rgb(184, 55, 55); color: white; border: solid black 3px; border-radius: 5px; cursor: pointer;">
+        Logout
+    </button>
+    </div>
 
     <form onsubmit="return validateForm();">
-        <h3><label for="dateValue">SELECT ORDER DATE:</label><input type="datetime-local" id="dateValue" placeholder="00.00.00" required></h3>
+        <h3><label for="dateValue">SELECT ORDER DATE:</label><input type="datetime-local" id="dateValue" placeholder="Select date and time" required></h3>
+        
+        
         <table>
             <thead>
                 <tr>
@@ -23,7 +35,7 @@
                     <th>LOCATION</th>
                     <th>MEDICATION GENERIC NAME</th>
                     <th>PAR</th>
-                    <th>PREVIOUS DATE ORDERED <br>PREVIOUS AMOUNT ORDERED</th>
+                    <th>PREVIOUS ORDER DETAILS</th>
                     <th>ORDER NOW</th>
                     <th>AMOUNT</th>
                 </tr>
@@ -714,6 +726,7 @@
 
     </form>
     <script src="page1.js"></script>
+
 </body>
 
 </html>

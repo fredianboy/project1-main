@@ -1,7 +1,7 @@
 * {
-    font-family: Courier, Times, serif;
+    font-family: 'Ubuntu', Courier, monospace;
     background-color: #f5f5f5;
-    font-size: 20px;
+    font-size: 16px;
     padding: 10px;
     box-sizing: border-box;
 }
@@ -25,7 +25,7 @@ h3 {
     font-size: 25px;
     font-weight: 700;
     padding-top: 5px;
-    background-color: #add8e6;
+    background-color: rgb(17, 173, 166);
     border-radius: 5px;
     padding-top: 10px;
 }
@@ -120,6 +120,28 @@ input[type="number"].editable {
     border: 1px solid #4CAF50;
 }
 
+input[type="datetime-local"] {
+    background-color: #ffffff;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    padding: 8px;
+    font-size: 18px;
+    color: #333;
+    width: fit-content;
+}
+
+input[type="datetime-local"] {
+    background-color: #ffffff;
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 6px 10px;
+    font-size: 18px;
+    color: #333;
+    width: fit-content;
+}
+
+
+
 input[type="number"] {
     width: 80px;
     padding: 5px;
@@ -153,13 +175,13 @@ input[readonly] {
     margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: orangered;
+    background-color: rgb(219, 46, 46);
     color: black;
     border: 2px solid black;
     cursor: pointer;
     border-radius: 5px;
     transition: all 0.2 ease;
-    color: yellow;
+    color: #f8f8f8;
 }
 
 
@@ -170,3 +192,5 @@ input[readonly] {
 .clear-btn:active {
   transform: scale(0.96);
 }
+
+

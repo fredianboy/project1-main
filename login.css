@@ -1,4 +1,6 @@
-
+        *{
+            font-family: 'Ubuntu', Courier, monospace;
+        }
         body {
             background-color: #f0f2f5;
             display: flex;
