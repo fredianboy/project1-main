@@ -22,11 +22,11 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     );
 
     if (matchedUser) {
-        // 🔁 Clear any previous form data when logging in
+        //  Clear any previous form data when logging in
         localStorage.removeItem("orderDate");
         localStorage.removeItem("reorderData");
 
-        // ✅ Save logged-in user and redirect
+        // Save logged-in user and redirect
         localStorage.setItem('loggedInUser', matchedUser.name);
         window.location.href = 'home.html';
     } else {

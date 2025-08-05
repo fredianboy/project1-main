@@ -116,7 +116,6 @@ td.checkbox-cell {
 
 input[type="number"].editable {
     background-color: #eaffea;
-    /* light green when editable */
     border: 1px solid #4CAF50;
 }
 

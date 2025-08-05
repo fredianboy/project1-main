@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const loggedInUser = localStorage.getItem('loggedInUser');
     const orderedByInput = document.getElementById('myInput');
 
-    // ✅ Auto-fill "Ordered By" with logged-in user's name
+    // Auto-fill "Ordered By" with logged-in user's name
     if (loggedInUser && orderedByInput) {
         orderedByInput.value = loggedInUser;
-        orderedByInput.readOnly = true; // prevent editing
+        orderedByInput.readOnly = true; 
     }
 
     if (!tableBody) return;
@@ -28,12 +28,12 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✅ Display order date in readable format
+    // Display order date better format
     const orderDate = localStorage.getItem("orderDate");
     const dateDisplay = document.getElementById("dateDisplay");
 
     if (orderDate && dateDisplay) {
-        const formattedDate = new Date(orderDate).toLocaleDateString("en-GB"); // DD/MM/YYYY
+        const formattedDate = new Date(orderDate).toLocaleDateString("en-GB");
         dateDisplay.textContent = `DATE: ${formattedDate}`;
     } else if (dateDisplay) {
         dateDisplay.textContent = "DATE: (Not provided)";

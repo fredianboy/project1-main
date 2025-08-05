@@ -1,4 +1,4 @@
-// Toggle input field when checkbox is clicked
+// activate input field when checkbox is clicked
 function toggleInput(checkbox) {
     const row = checkbox.closest("tr");
     const input = row.querySelector('input[type="number"]');
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // ✅ Restore previous reorderData if available
+    //  Restore previous reorderData if available
     const savedData = JSON.parse(localStorage.getItem("reorderData")) || [];
 
     if (savedData.length > 0) {
@@ -67,14 +67,14 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ✅ Restore previously selected date
+    //  Restore prev selected date
     const savedDate = localStorage.getItem("orderDate");
     if (savedDate) {
         const dateField = document.getElementById("dateValue");
         if (dateField) dateField.value = savedDate;
     }
 
-    // ✅ Show previous order history in .prevData
+    // Show previous order history in .prevData
     showPreviousOrders();
 
    const loggedInUser = localStorage.getItem("loggedInUser");
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const welcomeEl = document.getElementById("welcome-message");
     if (welcomeEl) {
         welcomeEl.textContent = `Welcome, ${loggedInUser}!`;
-      }
+    }
     } 
 
 
@@ -129,16 +129,16 @@ function validateForm() {
         }
     });
 
-    // ✅ Save current order
+    // Save current order
     localStorage.setItem("orderDate", dateValue);
     localStorage.setItem("reorderData", JSON.stringify(orderData));
 
-    // ✅ Append to history
+    // add to history
     const previousData = JSON.parse(localStorage.getItem("reorderHistory")) || [];
     previousData.push(...orderData);
     localStorage.setItem("reorderHistory", JSON.stringify(previousData));
 
-    // ✅ Redirect
+    //  redirect
     window.location.href = "table.html";
     return false;
 }
