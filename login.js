@@ -1,6 +1,6 @@
 // Hard-Code Creds
 const credentials = [
-    { username: "admin", password: "password123", name: "Fred" },
+    { username: "admin", password: "password123", name: "Admin" },
     { username: "user1", password: "welcome1", name: "Mayena" },
     { username: "testuser", password: "test2025", name: "Abdel" },
     { username: "guest", password: "guestpass", name: "Jaypee" },
