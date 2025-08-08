@@ -131,3 +131,8 @@ button:active {
   color: black;
   background-color: yellow;   
 }
+
+.form-section {
+    padding:0;
+    font-size: 11px;
+}
