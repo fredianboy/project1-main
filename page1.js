@@ -1,4 +1,6 @@
-// activate input field when checkbox is clicked
+const BASE_URL = 'https://stock-backend-rv75.onrender.com';
+
+// ✅ Enable input field when checkbox is clicked
 function toggleInput(checkbox) {
     const row = checkbox.closest("tr");
     const input = row.querySelector('input[type="number"]');
@@ -12,27 +14,23 @@ function toggleInput(checkbox) {
     }
 }
 
-//---------------------------------------------------------------------------------------------------------//
 document.addEventListener("DOMContentLoaded", function () {
-
     const numberInputs = document.querySelectorAll('input[type="number"]');
 
-    numberInputs.forEach((input) => {
-        input.addEventListener("keydown", function (e) {
+    // ✅ Restrict input to 3-digit numbers
+    numberInputs.forEach(input => {
+        input.addEventListener("keydown", e => {
             if (e.key === "Enter") {
                 e.preventDefault();
                 input.blur();
             }
         });
 
-        input.addEventListener("input", function () {
-            input.value = input.value.replace(/\D/g, '');
-            if (input.value.length > 3) {
-                input.value = input.value.slice(0, 3);
-            }
+        input.addEventListener("input", () => {
+            input.value = input.value.replace(/\D/g, '').slice(0, 3);
         });
 
-        input.addEventListener("paste", function (e) {
+        input.addEventListener("paste", e => {
             e.preventDefault();
             const paste = (e.clipboardData || window.clipboardData).getData("text");
             const sanitized = paste.replace(/\D/g, '').slice(0, 4);
@@ -40,9 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    //  Restore previous reorderData if available
+    // ✅ Prefill form from saved reorderData
     const savedData = JSON.parse(localStorage.getItem("reorderData")) || [];
-
     if (savedData.length > 0) {
         const rows = document.querySelectorAll("tr");
 
@@ -67,41 +64,28 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    //  Restore prev selected date
-    const savedDate = localStorage.getItem("orderDate");
-    if (savedDate) {
-        const dateField = document.getElementById("dateValue");
-        if (dateField) dateField.value = savedDate;
+    // ✅ Set current datetime as default + minimum
+    const dateField = document.getElementById("dateValue");
+    if (dateField) {
+        const now = new Date();
+        const tzOffset = now.getTimezoneOffset() * 60000;
+        const localISOTime = new Date(now - tzOffset).toISOString().slice(0, 16);
+        dateField.min = localISOTime;
+        dateField.value = localISOTime;
     }
 
-    // Show previous order history in .prevData
-    showPreviousOrders();
-
-   const loggedInUser = localStorage.getItem("loggedInUser");
-    if (loggedInUser) {
+    // ✅ Display welcome message
+    const loggedInUser = localStorage.getItem("loggedInUser");
     const welcomeEl = document.getElementById("welcome-message");
-    if (welcomeEl) {
+    if (loggedInUser && welcomeEl) {
         welcomeEl.textContent = `Welcome, ${loggedInUser}!`;
     }
-    } 
 
-
-    const dateField = document.getElementById("dateValue");
-if (dateField) {
-    const now = new Date();
-    const tzOffset = now.getTimezoneOffset() * 60000; // handle local time offset
-    const localISOTime = new Date(now - tzOffset).toISOString().slice(0, 16);
-    dateField.min = localISOTime;
-
-    const savedDate = localStorage.getItem("orderDate");
-    if (savedDate) {
-        dateField.value = savedDate;
-    }
-}
-
+    // ✅ Show previous order history
+    showPreviousOrders();
 });
 
-// ---------------------------------------------------------------------------------------------------------//
+// ✅ Form validation and draft save
 function validateForm() {
     const dateValue = document.getElementById("dateValue").value;
     if (!dateValue) {
@@ -125,93 +109,86 @@ function validateForm() {
         const user = localStorage.getItem("loggedInUser");
 
         if (mnemonic && medsName && amount) {
-            orderData.push({ mnemonic, medsName, amount, date: dateValue, user});
+            orderData.push({ mnemonic, medsName, amount, date: dateValue, user });
         }
     });
 
-    // Save current order
-    localStorage.setItem("orderDate", dateValue);
+    // ✅ Save to localStorage only (not backend yet)
     localStorage.setItem("reorderData", JSON.stringify(orderData));
+    localStorage.setItem("orderDate", dateValue);
 
-    // add to history
-    const previousData = JSON.parse(localStorage.getItem("reorderHistory")) || [];
-    previousData.push(...orderData);
-    localStorage.setItem("reorderHistory", JSON.stringify(previousData));
-
-    //  redirect
+    // ✅ Redirect to preview page
     window.location.href = "table.html";
+
     return false;
 }
 
+// ✅ Clear form + local data
 function clearFormData() {
     localStorage.removeItem("orderDate");
     localStorage.removeItem("reorderData");
 
-    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    const numberInputs = document.querySelectorAll('input[type="number"]');
-
-    checkboxes.forEach(cb => {
-        cb.checked = false;
-    });
-
-    numberInputs.forEach(input => {
+    document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+    document.querySelectorAll('input[type="number"]').forEach(input => {
         input.value = "";
         input.readOnly = true;
         input.classList.remove("editable");
     });
 
     const dateField = document.getElementById("dateValue");
-    if (dateField) {
-        dateField.value = "";
-    }
+    if (dateField) dateField.value = "";
 
     alert("Form has been cleared.");
 }
 
-// ---------------------------------------------------------------------------------------------------------//
+// ✅ Fetch and display previous 1-month order history
 function showPreviousOrders() {
-    const history = JSON.parse(localStorage.getItem("reorderHistory")) || [];
-    const now = new Date();
-    const oneMonthAgo = new Date(now.setMonth(now.getMonth() - 1));
+    fetch(`${BASE_URL}/api/orders`)
+        .then(res => res.json())
+        .then(history => {
+            const now = new Date();
+            const oneMonthAgo = new Date(now.setMonth(now.getMonth() - 1));
+            const grouped = {};
 
-    const grouped = {};
-    history.forEach(entry => {
-        const entryDate = new Date(entry.date);
-        if (entryDate >= oneMonthAgo) {
-            if (!grouped[entry.mnemonic]) grouped[entry.mnemonic] = [];
-            grouped[entry.mnemonic].push({
-                date: entry.date,
-                amount: entry.amount,
-                user: entry.user || "Unknown"
+            history.forEach(entry => {
+                const entryDate = new Date(entry.date);
+                if (entryDate >= oneMonthAgo) {
+                    if (!grouped[entry.mnemonic]) grouped[entry.mnemonic] = [];
+                    grouped[entry.mnemonic].push({
+                        date: entry.date,
+                        amount: entry.amount,
+                        user: entry.user || "Unknown"
+                    });
+                }
             });
-        }
-    });
 
-    document.querySelectorAll("tr").forEach(row => {
-        const mnemonic = row.querySelector(".mnemonic")?.textContent.trim();
-        const prevDataCell = row.querySelector(".prevData");
+            document.querySelectorAll("tr").forEach(row => {
+                const mnemonic = row.querySelector(".mnemonic")?.textContent.trim();
+                const prevDataCell = row.querySelector(".prevData");
 
-        if (mnemonic && prevDataCell) {
-            const historyEntries = grouped[mnemonic] || [];
-            if (historyEntries.length > 0) {
-                const latest = historyEntries[historyEntries.length - 1];
+                if (mnemonic && prevDataCell) {
+                    const historyEntries = grouped[mnemonic] || [];
+                    if (historyEntries.length > 0) {
+                        const latest = historyEntries[historyEntries.length - 1];
 
-                const formattedDate = new Date(latest.date).toLocaleString("en-GB", {
-                    day: "2-digit", month: "2-digit", year: "numeric",
-                    hour: "2-digit", minute: "2-digit"
-                });
+                        const formattedDate = new Date(latest.date).toLocaleString("en-GB", {
+                            day: "2-digit", month: "2-digit", year: "numeric",
+                            hour: "2-digit", minute: "2-digit"
+                        });
 
-                prevDataCell.textContent = `Last: ${formattedDate} by ${latest.user} [Qty: ${latest.amount}]`;
-            } else {
-                prevDataCell.textContent = "No recent orders";
-            }
-        }
-    });
+                        prevDataCell.textContent = `Last: ${formattedDate} by ${latest.user} [Qty: ${latest.amount}]`;
+                    } else {
+                        prevDataCell.textContent = "No recent orders";
+                    }
+                }
+            });
+        })
+        .catch(err => {
+            console.error("Failed to fetch previous orders:", err);
+        });
 }
 
-
-
-
+// ✅ Logout function
 function logoutUser() {
     localStorage.removeItem("loggedInUser");
     window.location.href = "index.html";

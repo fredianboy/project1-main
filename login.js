@@ -22,15 +22,20 @@ document.getElementById('login-form').addEventListener('submit', function(event)
     );
 
     if (matchedUser) {
-        //  Clear any previous form data when logging in
-        localStorage.removeItem("orderDate");
-        localStorage.removeItem("reorderData");
+    // Clear any previous form data when logging in
+    localStorage.removeItem("orderDate");
+    localStorage.removeItem("reorderData");
 
-        // Save logged-in user and redirect
-        localStorage.setItem('loggedInUser', matchedUser.name);
-        window.location.href = 'home.html';
-    } else {
-        errorMessage.textContent = 'Invalid username or password';
-        errorMessage.style.display = 'block';
+    // Save logged-in user
+    localStorage.setItem('loggedInUser', matchedUser.name);
+    localStorage.setItem('user', matchedUser.username); // NEW: this is needed for filtering
+
+    // Redirect
+    window.location.href = 'home.html';
+    }
+
+    else {
+    errorMessage.textContent = "Invalid username or password.";
+    errorMessage.style.display = "block";
     }
 });

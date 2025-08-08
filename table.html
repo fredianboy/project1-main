@@ -10,6 +10,9 @@
 </head>
 
 <body>
+    <header><h2>Order Preview</h2>
+    <p>Please review your order. You can go back to edit if needed, or submit when ready.</p>
+    </header>
 
     <div class="summary" id="a4-summary">
         <h1>PHARMACY WARD STOCK REORDER FORM</h1>
@@ -27,7 +30,7 @@
                     <tr>
                         <th>Mnemonic</th>
                         <th>Medication Name</th>
-                        <th>Quantity</th>
+                        <th>Total Amount</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -44,12 +47,14 @@
     </div>
 
 </body>
-    <script src="page2.js"></script>
+    <script src="page2.js" defer></script>
 
     <div class="button-container" id="do">
-        <button onclick="goBackToEdit()">EDIT ORDERS</button>
-        <button onclick="generatePDF()">DOWNLOAD REQUEST FORM</button>
+        <button onclick="goBackToEdit()"> BACK TO EDIT ORDERS</button>
+        <button onclick="submitOrderAndDownload()">CONFIRM & DOWNLOAD REQUEST FORM</button>
         <button onclick="logout()">COMPLETE & LOGOUT</button>
+        
+
         
     </div>
 

@@ -10,11 +10,15 @@
 }
 
 body {
-    font-family: Courier, Times, serif;
+    font-family: 'Segoe UI', Verdana, sans-serif;
     background: #f0f0f0;
     padding: 20px;
 }
 
+header {
+    text-align: center;
+    background-color:yellowgreen;
+}
 .summary {
     width: 210mm;
     min-height: 297mm;
