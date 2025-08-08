@@ -143,23 +143,17 @@ function clearFormData() {
 
 // ✅ Fetch and display previous 1-month order history
 function showPreviousOrders() {
-    fetch(`${BASE_URL}/api/orders`)
+    fetch(`${BASE_URL}/api/orders/latest`)
         .then(res => res.json())
-        .then(history => {
-            const now = new Date();
-            const oneMonthAgo = new Date(now.setMonth(now.getMonth() - 1));
+        .then(latestOrders => {
             const grouped = {};
 
-            history.forEach(entry => {
-                const entryDate = new Date(entry.date);
-                if (entryDate >= oneMonthAgo) {
-                    if (!grouped[entry.mnemonic]) grouped[entry.mnemonic] = [];
-                    grouped[entry.mnemonic].push({
-                        date: entry.date,
-                        amount: entry.amount,
-                        user: entry.user || "Unknown"
-                    });
-                }
+            latestOrders.forEach(entry => {
+                grouped[entry.mnemonic] = {
+                    date: entry.date,
+                    amount: entry.amount,
+                    user: entry.user || "Unknown"
+                };
             });
 
             document.querySelectorAll("tr").forEach(row => {
@@ -167,10 +161,8 @@ function showPreviousOrders() {
                 const prevDataCell = row.querySelector(".prevData");
 
                 if (mnemonic && prevDataCell) {
-                    const historyEntries = grouped[mnemonic] || [];
-                    if (historyEntries.length > 0) {
-                        const latest = historyEntries[historyEntries.length - 1];
-
+                    const latest = grouped[mnemonic];
+                    if (latest) {
                         const formattedDate = new Date(latest.date).toLocaleString("en-GB", {
                             day: "2-digit", month: "2-digit", year: "numeric",
                             hour: "2-digit", minute: "2-digit"
@@ -184,9 +176,11 @@ function showPreviousOrders() {
             });
         })
         .catch(err => {
-            console.error("Failed to fetch previous orders:", err);
+            console.error("❌ Failed to fetch previous orders:", err);
         });
 }
+
+
 
 // ✅ Logout function
 function logoutUser() {
