@@ -141,11 +141,17 @@ button:active {
     width:100%;
     height: 20px;
     resize: none;
-    border: 1px solid black;
+    border: 1px solid #ccc;
     overflow: hidden;
+    margin-bottom: 5px;
 }
 
 .pharma-section h2 {
     text-align: left;
     font-size:small;
+    text-decoration: none;
+    font-size: small;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 0;
 }
