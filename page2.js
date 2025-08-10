@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function populateTable(data) {
   const tableBody = document.querySelector("#summary-table tbody");
-  const orderedByInput = document.getElementById('myInput');
+  const orderedByInput = document.getElementById('ordered-by');
   const loggedInUser = localStorage.getItem('loggedInUser');
 
   if (orderedByInput && loggedInUser) {
