@@ -3,7 +3,7 @@ const credentials = [
     { username: "admin", password: "password123!2", name: "Admin" },
     { username: "MAguilar", password: "Hospital1", name: "Mayena" },
     { username: "AArani", password: "aarani", name: "Abdel" },
-    { username: "JBacalla", password: "Hospital1", name: "Jaypee" },
+    { username: "JBacalla", password: "444555666", name: "Jaypee" },
     { username: "MVillareal", password: "Hospital1", name: "Grace" },
     { username: "JYgona", password: "686868", name: "Jakki" },
     { username: "PDeppler", password: "Manager1", name: "Phillip" },
