@@ -1,13 +1,15 @@
 // Hard-Code Creds
 const credentials = [
-    { username: "admin", password: "password123", name: "Admin" },
-    { username: "user1", password: "welcome1", name: "Mayena" },
-    { username: "testuser", password: "test2025", name: "Abdel" },
-    { username: "guest", password: "guestpass", name: "Jaypee" },
-    { username: "pharmacy", password: "pharmacy2025", name: "Grace" },
-    { username: "pharmacist", password: "pharmacist2025", name: "Jakki" },
-    { username: "boss", password: "finalboss", name: "Phillip" },
-    { username: "user2", password: "user2pass", name: "Fatima" }    
+    { username: "admin", password: "password123!2", name: "Admin" },
+    { username: "MAguilar", password: "Hospital1", name: "Mayena" },
+    { username: "AArani", password: "aarani", name: "Abdel" },
+    { username: "JBacalla", password: "Hospital1", name: "Jaypee" },
+    { username: "MVillareal", password: "Hospital1", name: "Grace" },
+    { username: "JYgona", password: "686868", name: "Jakki" },
+    { username: "PDeppler", password: "Manager1", name: "Phillip" },
+    { username: "FFofana", password: "Hospital1", name: "Fatima" },
+    { username: "FHortilano", password: "Asakura123!", name: "Fred" }
+    
 ];
 
 document.getElementById('login-form').addEventListener('submit', function(event) {
