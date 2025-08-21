@@ -8,7 +8,9 @@ const credentials = [
     { username: "JYgona", password: "686868", name: "Jakki" },
     { username: "PDeppler", password: "Manager1", name: "Phillip" },
     { username: "FFofana", password: "Hospital1", name: "Fatima" },
-    { username: "FHortilano", password: "Asakura123!", name: "Fred" }
+    { username: "FHortilano", password: "Asakura123!", name: "Fred" },
+    { username: "SDales", password: "", name: "Stacy" }
+   // { username: "", password: "", name: "" },
     
 ];
 
