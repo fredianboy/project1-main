@@ -9,7 +9,7 @@ const credentials = [
     { username: "PDeppler", password: "Manager1", name: "Phillip" },
     { username: "FFofana", password: "Hospital1", name: "Fatima" },
     { username: "FHortilano", password: "Asakura123!", name: "Fred" },
-    { username: "SDales", password: "", name: "Stacy" }
+    { username: "SDales", password: "Stakura22", name: "Stacy" }
    // { username: "", password: "", name: "" },
     
 ];
